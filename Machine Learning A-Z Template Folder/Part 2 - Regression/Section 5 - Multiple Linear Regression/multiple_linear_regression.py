@@ -18,10 +18,12 @@ onehotencoder = OneHotEncoder(categorical_features = [3])
 X = onehotencoder.fit_transform(X).toarray()
 
 # Avoiding the Dummy Variable Trap
+# Note: our library actually takes care of this but we are doing it here
+# for educational purposes.
 X = X[:, 1:]
  
 # Splitting the dataset into the Training set and Test set
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
 
 # Feature Scaling
